@@ -1,0 +1,4 @@
+{
+  "frontend/src/components/ParticleBackground.tsx": "Canvas-based animated particle field that renders behind all views, with mouse repulsion parallax effect and particle connection lines. Particle color adapts to the active theme (cyan/blue/green) via a theme ref that updates without re-mounting the canvas animation loop.",
+  "frontend/src/components/GuidedTour.tsx": "Step-by-step guided demo tour overlay with spotlight dark overlay, progress bar, dot indicators, and prev/next navigation. Covers all 10 tour steps from the tourSteps data file and shows a congratulations screen with trophy animation on completion."
+}

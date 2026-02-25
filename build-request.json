@@ -1,0 +1,414 @@
+{
+  "kind": "build_request",
+  "title": "Build SUPER ASSISTANT — Futuristic Cyberpunk Full-Stack Showcase",
+  "projectName": "SUPER ASSISTANT",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a Motoko backend actor with stable storage for: user profiles (username, avatar choice, theme preference), quiz scores (user ID, score, timestamp), and chat history (user ID, array of message strings). Expose query and update methods for CRUD operations on all three data types.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "Both Motoko backend (for storing profiles, quiz scores, chat history)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User profiles can be created, read, and updated via backend calls",
+        "Quiz scores are persisted and retrievable per user",
+        "Chat history messages are stored and retrievable per user",
+        "All data survives canister upgrades via stable variables"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create an animated intro/splash screen that displays on first load. It must show the ASCII art logo for SUPER ASSISTANT rendered in glowing neon text, with a typewriter reveal animation, particle burst effect, and synthetic sound effect (Web Audio API beep/hum). After ~4 seconds or a 'Enter' keypress, transition to the main dashboard.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Animated intro screen with glowing text and sound effects",
+          "ASCII art logo"
+        ]
+      },
+      "acceptanceCriteria": [
+        "ASCII logo is fully and correctly displayed character-by-character",
+        "Glowing neon text effect is visible on the logo and tagline",
+        "Sound plays on intro load (respecting mute toggle)",
+        "Pressing Enter or waiting 4s transitions smoothly to the dashboard",
+        "Transition uses a fade/glitch animation"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build an OS-style main dashboard as the app's hub. It must resemble a futuristic operating system desktop with icon-based app tiles for each feature (Chatbot, Terminal, Quiz, Games, Cyber Defender, Profile, News, Hacker Page easter egg). Support mouse click navigation and keyboard arrow-key + Enter navigation between tiles. Include a top taskbar showing the current time, theme switcher, mute button, and fullscreen toggle.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "A dashboard that looks like an operating system",
+          "Mouse and keyboard interactive navigation"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All feature tiles are visible and clickable on the dashboard",
+        "Keyboard navigation highlights tiles and Enter opens them",
+        "Taskbar shows live clock, theme switcher, mute toggle, and fullscreen button",
+        "Clicking a tile transitions to the correct feature view with animation"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement three themes — Dark (default deep black + neon cyan), Light (white + electric blue), and Hacker (pure black + matrix green) — with instant switching via the taskbar. Apply the selected theme globally using CSS variables / Tailwind class strategy. Persist the user's theme choice to the Motoko backend profile.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Dark, light, and hacker themes. User can switch themes instantly"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All three themes apply instantly without page reload",
+        "Every UI component respects the active theme's color palette",
+        "Selected theme is saved to the user profile on the backend",
+        "On next visit, the last-used theme is restored"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create an animated particle background using Three.js / React Three Fiber that renders continuously behind all views. Particles should drift and react to mouse movement (parallax repulsion). The particle color must adapt to the active theme (cyan for dark, blue for light, green for hacker).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Particle background and futuristic effects"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Particle field is visible on the dashboard and all major views",
+        "Particles visibly react to mouse cursor movement",
+        "Particle color changes when theme switches",
+        "Particle animation does not cause noticeable frame drops on mid-range hardware"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Build an AI chatbot simulation panel. It must accept user text input and respond from a hard-coded knowledge base of 50+ responses covering tech topics, greetings, jokes, and mood-sensitive replies. Responses must be rendered with a real-time typewriter animation (character-by-character) with a slight random delay to simulate thinking. Display conversation history fetched from the Motoko backend. Include a 'mood detection' feature: scan user input for keywords (frustrated, happy, confused, etc.) and prepend a contextual emoji + tone adjustment to the response.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "AI assistant simulation",
+          "Smart chatbot with pre-trained responses",
+          "Real-time typing animation for assistant responses",
+          "Mood detection based on user input"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chatbot responds to at least 50 distinct input patterns",
+        "Every response renders character-by-character with typewriter effect",
+        "Mood detection correctly identifies at least 5 emotional keywords and adjusts response tone",
+        "Conversation history is saved to and loaded from the backend",
+        "UI clearly shows 'thinking' state before response starts"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement a Terminal Mode view that looks like a real hacking terminal. It must accept typed commands (help, whoami, scan, decrypt, hack, clear, exit) and render styled output with green-on-black monospace text, blinking cursor, and simulated processing delays with fake progress bars or streaming text. Opening the terminal should play a subtle keystroke/boot sound.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Terminal mode that looks like hacking"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Terminal renders in full hacker-green monospace style",
+        "At least 7 commands produce distinct styled outputs",
+        "Fake progress bars / streaming output animations are present",
+        "Blinking cursor is visible in the input line",
+        "Sound plays on terminal open (respecting mute toggle)"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Build a Quiz Mode with at least 20 questions covering real-life cybersecurity and phishing scenarios (e.g., 'You received an email saying you won a lottery and must click a link — what do you do? A) Click the link B) Report/ignore it'). Show a score counter, correct/incorrect feedback animations, and a final score screen. Save the final score to the Motoko backend. Questions must have logically correct educational answers.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "Quiz mode about programming and technology",
+          "real life questions like you have got lottery click on this link",
+          "real-life phishing/scam scenarios"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 20 questions are implemented covering phishing, scams, and cyber safety",
+        "Each question has multiple choice options with one correct educational answer",
+        "Score increments correctly and is shown live",
+        "Final score is persisted to the backend",
+        "Correct/wrong answer triggers distinct animation feedback"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement a Memory Game where the player flips cards to find matching pairs of tech-themed icons/symbols (e.g., lock, bug, shield, key, wifi, code). Include a move counter, timer, and win state animation. Implement a Logic Puzzle where the user solves a simple programming/logic riddle (at least 5 riddles with a text input answer check).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Memory game and logic puzzle to attract audience"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Memory game has at least 16 cards (8 pairs) with flip animation",
+        "Move counter and timer are visible and functional",
+        "Win state triggers a glowing celebration animation",
+        "Logic puzzle presents at least 5 riddles sequentially",
+        "Correct answer triggers positive feedback; wrong answer shows the correct answer"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Create a Tech News Simulation panel that displays a scrolling feed of 15+ hard-coded realistic-looking tech news headlines with publication timestamps, category tags (AI, Security, Blockchain, etc.), and a short excerpt. Include a 'Breaking News' ticker bar at the top. Clicking a headline expands it to a fake full article view.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Tech news simulation"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 15 news items are displayed in the feed",
+        "Breaking news ticker animates horizontally",
+        "Category tags are color-coded per theme",
+        "Clicking a headline expands a fake full article with smooth animation"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Build a User Profile page where the user can set a username, choose an avatar from 8+ preset cyberpunk avatar illustrations (SVG/emoji-based), and view their stats (total quiz score, games played, chats sent). Profile data must be saved to and loaded from the Motoko backend.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "User profile with avatar"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Username can be set and updated",
+        "At least 8 avatar options are selectable",
+        "Stats panel shows quiz score, games played, and chat count from backend",
+        "Saving profile writes to the Motoko backend and shows a success confirmation"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Implement a music and sound effects system using the Web Audio API. Include a toggle button in the taskbar for mute/unmute. Background ambient music (synthwave loop generated procedurally or via AudioBuffer) should play in the dashboard. Distinct sound effects must play for: button clicks, theme switch, terminal open, intro screen, quiz correct/wrong answers, and game win.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Music and sound effects toggle"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Mute/unmute toggle works globally and persists across views",
+        "Background ambient sound plays on dashboard when unmuted",
+        "At least 6 distinct sound effects trigger on the correct user actions",
+        "No audio errors appear in the console"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add a fullscreen immersive mode button in the taskbar that calls the Fullscreen API to expand the app to fill the entire screen. The app layout must reflow gracefully in fullscreen without overflow or layout breaks.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Full-screen immersive experience"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Fullscreen button toggles browser fullscreen mode",
+        "All views render correctly in fullscreen without scrollbars or clipping",
+        "Pressing Escape exits fullscreen and the button state updates accordingly"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Build a Guided Demo Tour mode accessible from the dashboard. When activated, it walks the user through 8–10 key features in sequence using highlighted spotlight overlays, animated pointers, and descriptive tooltip cards. Each step has a 'Next' button. The tour should showcase: intro, dashboard, chatbot, terminal, quiz, memory game, news, Cyber Defender, and Hacker Page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "guid tour",
+          "Guided demo tour for judges"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Tour covers at least 8 distinct features in order",
+        "Each step shows a spotlight/overlay highlight on the relevant UI element",
+        "Tooltip cards display a short description per step",
+        "User can advance with 'Next' or exit the tour at any point",
+        "Tour completion shows a congratulations screen"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Implement the Easter Egg Hacker Page. It must be hidden and only accessible by typing the secret Konami code (↑↑↓↓←→←→BA) on the keyboard or entering the command 'hacker' in the terminal. The page must feature: (1) a cinematic password cracking animation showing random characters cycling until the 'cracked' password is revealed, (2) a password strength checker input where the user types any password and receives a real-time strength score (Weak/Medium/Strong) with visual bar indicator, and (3) if the entered password is Weak, an auto-generated strong password suggestion is displayed.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "special animation password craking",
+          "Cheking the password is weak or strong",
+          "if weak create strong",
+          "in a haker page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hacker Page is not visible in normal navigation — only accessible via Konami code or terminal command",
+        "Password cracker animation runs for ~3 seconds then reveals a 'cracked' password",
+        "Password strength checker evaluates length, symbols, numbers, and uppercase",
+        "Strength bar visually shows Weak (red), Medium (yellow), Strong (green)",
+        "Weak passwords trigger an auto-generated strong password suggestion",
+        "The page uses full hacker-green monospace aesthetic"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Build the Cyber Defender page as a dedicated cybersecurity awareness experience. It must include: an interactive threat identification mini-game (user spots phishing elements in a fake email screenshot), a cybersecurity tips carousel with 10+ actionable tips, a 'Shield Score' that increases as the user completes awareness activities, and a visual threat map animation showing fake global cyber attack paths.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-5"
+        ],
+        "quotes": [
+          "Cyber Defender dedicated cybersecurity awareness page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Cyber Defender page is accessible from the dashboard as a named tile",
+        "Phishing email mini-game presents a fake email with at least 5 clickable suspicious elements to identify",
+        "Tips carousel shows at least 10 cybersecurity tips with navigation arrows",
+        "Shield Score increments when activities are completed",
+        "Threat map animation shows animated arcs between fake geographic nodes"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Apply a cohesive neon cyberpunk visual design system across all views. Use deep black (#0a0a0f) base backgrounds, neon cyan (#00fff7) primary accents for dark theme, matrix green (#00ff41) for hacker theme, and electric blue (#0066ff) for light theme. All interactive buttons must have high-contrast glowing borders and hover glow effects. Typography must use a monospace/sci-fi font (e.g., Orbitron or Share Tech Mono from Google Fonts). All page transitions must use glitch/slide/fade animations. The ASCII art logo must appear in the header of the dashboard with a continuous glow pulse animation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "Ultra-modern glowing UI with neon cyberpunk style",
+          "High contrast glowing buttons",
+          "The final result must look like a futuristic product"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All views use the defined color palette for the active theme",
+        "Buttons have visible glowing borders with hover glow amplification",
+        "Sci-fi / monospace font is applied to all headings and UI labels",
+        "Page transitions use animated effects (glitch, fade, or slide)",
+        "ASCII logo is displayed in the dashboard header with a CSS glow pulse animation",
+        "UI looks like a futuristic product at a glance, not a standard web page"
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "text": "Ensure the application is fully responsive for both mobile (320px+) and laptop (1024px+) screen sizes. The OS-style dashboard must reflow to a vertical scrollable tile grid on mobile. Touch events must work for game interactions and navigation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Responsive for mobile and laptop"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard tiles reflow to a 2-column grid on screens below 768px",
+        "All text, buttons, and inputs are legible and tappable on mobile",
+        "Memory game and quiz are fully playable on a touch screen",
+        "No horizontal overflow on any screen size"
+      ]
+    }
+  ],
+  "constraints": [
+    "All backend logic must remain in a single Motoko actor in backend/main.mo",
+    "No real AI/LLM API calls — all chatbot responses must be simulated from a hard-coded knowledge base",
+    "No external audio file dependencies — use Web Audio API for procedural sound generation",
+    "Do not edit any files under frontend/src/hooks/ or frontend/src/components/ui",
+    "No real user authentication required — profile is stored by a simple local session key"
+  ],
+  "nonGoals": [
+    "Real AI or machine learning integration",
+    "Real internet news API integration",
+    "Internet Identity / wallet authentication",
+    "Real-time multiplayer for games",
+    "Email or SMS notifications",
+    "External database or cloud storage"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Cyberpunk neon dashboard background — deep black with subtle glowing grid lines and hex patterns, landscape (dashboard-bg.dim_1920x1080.png)",
+      "Cyber Defender page hero banner — glowing digital shield with circuit board texture on dark background (cyber-defender-banner.dim_1200x400.png)",
+      "Hacker Page background — cascading green matrix code rain on pure black background (hacker-bg.dim_1920x1080.png)",
+      "8 cyberpunk avatar portrait illustrations — pixel-art style sci-fi characters in neon colors, arranged in one sprite sheet (avatars-sheet.dim_512x256.png)"
+    ],
+    "edits": []
+  }
+}

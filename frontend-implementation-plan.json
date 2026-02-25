@@ -1,0 +1,460 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "SUPER ASSISTANT — Futuristic Cyberpunk Full-Stack Showcase Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Create animated intro/splash screen with ASCII art logo, typewriter animation, particle effects, and Web Audio API sound",
+      "acceptanceCriteria": [
+        "ASCII logo is fully and correctly displayed character-by-character",
+        "Glowing neon text effect is visible on the logo and tagline",
+        "Sound plays on intro load (respecting mute toggle)",
+        "Pressing Enter or waiting 4s transitions smoothly to the dashboard",
+        "Transition uses a fade/glitch animation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/IntroScreen.tsx",
+          "operation": "create",
+          "description": "Build the animated intro/splash screen component with ASCII art logo (SUPER ASSISTANT), typewriter character-by-character reveal animation, particle burst effect using Canvas API, Web Audio API beep/hum sound generation on mount, and auto-transition to dashboard after 4 seconds or Enter keypress. Include glitch/fade transition animation and integrate with global mute state."
+        },
+        {
+          "path": "frontend/src/utils/audio.ts",
+          "operation": "create",
+          "description": "Create Web Audio API utility module for procedural sound generation including intro beep/hum, button clicks, theme switch, terminal boot, quiz feedback, and game win sounds. Export functions to play each sound effect and create ambient synthwave background loop. All functions must respect global mute state."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build OS-style main dashboard with icon-based app tiles, keyboard navigation, and taskbar with live clock and controls",
+      "acceptanceCriteria": [
+        "All feature tiles are visible and clickable on the dashboard",
+        "Keyboard navigation highlights tiles and Enter opens them",
+        "Taskbar shows live clock, theme switcher, mute toggle, and fullscreen button",
+        "Clicking a tile transitions to the correct feature view with animation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Dashboard.tsx",
+          "operation": "create",
+          "description": "Create the main OS-style dashboard hub component with icon-based tiles for: Chatbot, Terminal, Quiz, Games (Memory/Logic), Cyber Defender, Profile, News, and Hacker Page (visible but labeled as easter egg hint). Implement mouse click navigation and keyboard arrow-key navigation with visual focus highlighting. Each tile click triggers animated route transition to the feature view."
+        },
+        {
+          "path": "frontend/src/components/Taskbar.tsx",
+          "operation": "create",
+          "description": "Build the taskbar component displaying live clock (updating every second), theme switcher dropdown (Dark/Light/Hacker), global mute/unmute toggle button, and fullscreen toggle button. Emit events to parent for theme/mute/fullscreen changes. Style with theme-aware neon accents."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement three themes (Dark, Light, Hacker) with instant switching and backend persistence",
+      "acceptanceCriteria": [
+        "All three themes apply instantly without page reload",
+        "Every UI component respects the active theme's color palette",
+        "Selected theme is saved to the user profile on the backend",
+        "On next visit, the last-used theme is restored"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/contexts/ThemeContext.tsx",
+          "operation": "create",
+          "description": "Create ThemeContext providing current theme state (dark/light/hacker) and switchTheme function. On theme change, update CSS variables/Tailwind classes on document root and call backend switchTheme method to persist choice. On mount, fetch theme from backend via getTheme and apply it. Export useTheme hook."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define CSS custom properties for three theme palettes: Dark (deep black #0a0a0f + neon cyan #00fff7), Light (white + electric blue #0066ff), Hacker (pure black + matrix green #00ff41). Add theme classes (.theme-dark, .theme-light, .theme-hacker) that override variables. Include neon glow effects and pulse animations for buttons and borders."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind config to use CSS custom properties for theme colors (primary, background, text, accent). Add custom animation utilities for glow, pulse, glitch, and fade effects. Configure monospace/sci-fi font family (Orbitron or Share Tech Mono via Google Fonts)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create animated particle background with Three.js/React Three Fiber that reacts to mouse and adapts to theme",
+      "acceptanceCriteria": [
+        "Particle field is visible on the dashboard and all major views",
+        "Particles visibly react to mouse cursor movement",
+        "Particle color changes when theme switches",
+        "Particle animation does not cause noticeable frame drops on mid-range hardware"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ParticleBackground.tsx",
+          "operation": "create",
+          "description": "Build a React Three Fiber Canvas component rendering a drifting particle field. Particles should use theme-aware colors (cyan for dark, blue for light, green for hacker) via useTheme context. Implement mouse parallax repulsion effect on pointer move. Optimize particle count and rendering for performance. Position as a fixed background layer behind all content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Build AI chatbot simulation with hard-coded responses, typewriter animation, mood detection, and backend history",
+      "acceptanceCriteria": [
+        "Chatbot responds to at least 50 distinct input patterns",
+        "Every response renders character-by-character with typewriter effect",
+        "Mood detection correctly identifies at least 5 emotional keywords and adjusts response tone",
+        "Conversation history is saved to and loaded from the backend",
+        "UI clearly shows 'thinking' state before response starts"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Chatbot.tsx",
+          "operation": "create",
+          "description": "Create the chatbot panel view with text input, message history display, and typewriter animation for assistant responses. On mount, fetch conversation history from backend via getChatHistory. On user submit, detect mood keywords (frustrated, happy, confused, sad, excited) and prepend contextual emoji + tone-adjusted response from hard-coded knowledge base of 50+ tech topic responses. Show 'thinking...' spinner before response. Save each message via backend addChatMessage method. Style with theme-aware neon borders and monospace font."
+        },
+        {
+          "path": "frontend/src/data/chatbotResponses.ts",
+          "operation": "create",
+          "description": "Export a hard-coded knowledge base object mapping input pattern keywords to response strings. Include at least 50 responses covering: tech greetings, programming topics, jokes, cybersecurity advice, and mood-sensitive replies. Also export mood keyword mappings (frustrated → calming tone, happy → enthusiastic tone, etc.)."
+        },
+        {
+          "path": "frontend/src/components/TypewriterText.tsx",
+          "operation": "create",
+          "description": "Create a reusable TypewriterText component that accepts a text string prop and renders it character-by-character with a configurable delay per character (default ~30ms with slight random variance to simulate human typing). Use useEffect with setTimeout to progressively reveal characters. Export for use in chatbot and terminal views."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Implement Terminal Mode with hacking commands, styled output, fake progress bars, and boot sound",
+      "acceptanceCriteria": [
+        "Terminal renders in full hacker-green monospace style",
+        "At least 7 commands produce distinct styled outputs",
+        "Fake progress bars / streaming output animations are present",
+        "Blinking cursor is visible in the input line",
+        "Sound plays on terminal open (respecting mute toggle)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Terminal.tsx",
+          "operation": "create",
+          "description": "Build a terminal emulator view with green-on-black monospace styling, blinking cursor in the input line, and command history. Support commands: help, whoami, scan, decrypt, hack, clear, exit, and hacker (easter egg trigger). Each command generates styled output with fake processing delays, progress bar animations, or streaming text effects. On mount, play terminal boot sound via audio utility (respecting mute state). Exit command returns to dashboard."
+        },
+        {
+          "path": "frontend/src/utils/terminalCommands.ts",
+          "operation": "create",
+          "description": "Export command handler functions for each terminal command (help, whoami, scan, decrypt, hack, clear, exit, hacker). Each returns styled output strings (with ANSI-like color codes or JSX elements) and optional delay/animation metadata. Include fake progress bar ASCII art and streaming text simulation logic."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Build Quiz Mode with 20+ cybersecurity questions, score tracking, feedback animations, and backend persistence",
+      "acceptanceCriteria": [
+        "At least 20 questions are implemented covering phishing, scams, and cyber safety",
+        "Each question has multiple choice options with one correct educational answer",
+        "Score increments correctly and is shown live",
+        "Final score is persisted to the backend",
+        "Correct/wrong answer triggers distinct animation feedback"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Quiz.tsx",
+          "operation": "create",
+          "description": "Create the quiz view component that displays questions sequentially from a hard-coded question bank, shows multiple choice buttons, tracks live score counter, and provides correct/incorrect feedback animations (green glow for correct, red shake for wrong). On quiz completion, show final score screen and persist score to backend via addQuizScore method. Style with theme-aware neon accents."
+        },
+        {
+          "path": "frontend/src/data/quizQuestions.ts",
+          "operation": "create",
+          "description": "Export an array of at least 20 quiz question objects covering real-life phishing scenarios, scam detection, password safety, social engineering, and cybersecurity best practices. Each question has: text, options array (A/B/C/D), correctAnswer index, and a brief explanation. Ensure answers are logically correct and educational."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Implement Memory Game and Logic Puzzle with animations, counters, and win states",
+      "acceptanceCriteria": [
+        "Memory game has at least 16 cards (8 pairs) with flip animation",
+        "Move counter and timer are visible and functional",
+        "Win state triggers a glowing celebration animation",
+        "Logic puzzle presents at least 5 riddles sequentially",
+        "Correct answer triggers positive feedback; wrong answer shows the correct answer"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Games.tsx",
+          "operation": "create",
+          "description": "Create a Games hub view with tabs or tiles to switch between Memory Game and Logic Puzzle. Render the selected game component and handle back navigation to dashboard."
+        },
+        {
+          "path": "frontend/src/components/MemoryGame.tsx",
+          "operation": "create",
+          "description": "Build a memory card matching game with 16 cards (8 pairs) using tech-themed icons (lock, bug, shield, key, wifi, code, terminal, cloud). Implement card flip animation, move counter, live timer, and win state detection. On win, trigger glowing celebration animation with confetti effect and play win sound. Style cards with neon borders and theme-aware colors."
+        },
+        {
+          "path": "frontend/src/components/LogicPuzzle.tsx",
+          "operation": "create",
+          "description": "Build a logic puzzle view that presents programming/logic riddles sequentially (at least 5 riddles). Display riddle text, text input for answer, and submit button. On correct answer, show positive feedback animation and advance to next riddle. On wrong answer, show correct answer with explanation. Track riddles completed. Style with monospace font and neon glow effects."
+        },
+        {
+          "path": "frontend/src/data/logicRiddles.ts",
+          "operation": "create",
+          "description": "Export an array of at least 5 logic riddles with question text, correct answer (case-insensitive string or number), and explanation. Examples: binary conversion, algorithm logic, loop output prediction."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Create Tech News Simulation with scrolling feed, breaking news ticker, and expandable articles",
+      "acceptanceCriteria": [
+        "At least 15 news items are displayed in the feed",
+        "Breaking news ticker animates horizontally",
+        "Category tags are color-coded per theme",
+        "Clicking a headline expands a fake full article with smooth animation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/TechNews.tsx",
+          "operation": "create",
+          "description": "Build the tech news simulation view with a horizontally scrolling 'Breaking News' ticker at the top and a scrollable feed of 15+ hard-coded news items below. Each item shows headline, timestamp, category tag (AI, Security, Blockchain, etc.), and short excerpt. Clicking a headline expands it to show a fake full article with smooth accordion animation. Category tags use theme-aware color coding. Style with neon borders and monospace headlines."
+        },
+        {
+          "path": "frontend/src/data/newsData.ts",
+          "operation": "create",
+          "description": "Export an array of at least 15 realistic-looking tech news objects with headline, category, timestamp, excerpt, and fake full article body. Include diverse categories (AI, Security, Blockchain, IoT, Quantum, Cloud) with plausible futuristic headlines."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Build User Profile page with username, avatar selection, stats display, and backend persistence",
+      "acceptanceCriteria": [
+        "Username can be set and updated",
+        "At least 8 avatar options are selectable",
+        "Stats panel shows quiz score, games played, and chat count from backend",
+        "Saving profile writes to the Motoko backend and shows a success confirmation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Profile.tsx",
+          "operation": "create",
+          "description": "Create the user profile page component with input for username, avatar selection grid showing 8+ cyberpunk avatar illustrations (using the generated avatars-sheet.dim_512x256.png sprite), and stats panel displaying totalScore, gamesPlayed, and chatsSent fetched from backend via getProfile. On save, call backend createOrUpdateProfile method and show success confirmation animation. Style with neon borders and theme-aware glow effects."
+        },
+        {
+          "path": "frontend/src/utils/avatarLoader.ts",
+          "operation": "create",
+          "description": "Export utility functions to load and slice the avatar sprite sheet (frontend/public/assets/generated/avatars-sheet.dim_512x256.png) into 8 individual avatar images or CSS background-position coordinates for display in the avatar selection grid."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Implement music and sound effects system with global mute toggle and Web Audio API",
+      "acceptanceCriteria": [
+        "Mute/unmute toggle works globally and persists across views",
+        "Background ambient sound plays on dashboard when unmuted",
+        "At least 6 distinct sound effects trigger on the correct user actions",
+        "No audio errors appear in the console"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/contexts/AudioContext.tsx",
+          "operation": "create",
+          "description": "Create AudioContext providing global mute state, toggleMute function, playSound function (accepts sound type enum), and startAmbientMusic/stopAmbientMusic functions. On mount, initialize Web Audio API context. Manage ambient synthwave loop playback on dashboard and stop on other views. Store mute preference in localStorage. Export useAudio hook."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Add fullscreen immersive mode button with graceful layout reflow",
+      "acceptanceCriteria": [
+        "Fullscreen button toggles browser fullscreen mode",
+        "All views render correctly in fullscreen without scrollbars or clipping",
+        "Pressing Escape exits fullscreen and the button state updates accordingly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useFullscreen.ts",
+          "operation": "create",
+          "description": "Create a custom React hook useFullscreen that provides isFullscreen state and toggleFullscreen function. Use the Fullscreen API (document.documentElement.requestFullscreen / document.exitFullscreen) and listen to fullscreenchange event to update state. Handle browser compatibility gracefully."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Build Guided Demo Tour mode with spotlight overlays, tooltips, and feature walkthrough",
+      "acceptanceCriteria": [
+        "Tour covers at least 8 distinct features in order",
+        "Each step shows a spotlight/overlay highlight on the relevant UI element",
+        "Tooltip cards display a short description per step",
+        "User can advance with 'Next' or exit the tour at any point",
+        "Tour completion shows a congratulations screen"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/GuidedTour.tsx",
+          "operation": "create",
+          "description": "Build a guided demo tour overlay component with step-based walkthrough logic. Each step targets a specific UI element (intro, dashboard tiles, chatbot, terminal, quiz, memory game, news, Cyber Defender, hacker page) using spotlight highlight (dark overlay with cutout) and tooltip card with description. Provide 'Next', 'Previous', and 'Exit' buttons. On completion, show congratulations screen with confetti animation. Make tour accessible via dashboard button or query param."
+        },
+        {
+          "path": "frontend/src/data/tourSteps.ts",
+          "operation": "create",
+          "description": "Export an array of tour step objects defining: target element selector, tooltip title, tooltip description, and position hint (top/bottom/left/right). Cover at least 8 features in logical order: intro screen, dashboard navigation, chatbot usage, terminal commands, quiz flow, memory game, news feed, Cyber Defender, and hacker page easter egg."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Implement Easter Egg Hacker Page with Konami code unlock, password cracker animation, strength checker, and generator",
+      "acceptanceCriteria": [
+        "Hacker Page is not visible in normal navigation — only accessible via Konami code or terminal command",
+        "Password cracker animation runs for ~3 seconds then reveals a 'cracked' password",
+        "Password strength checker evaluates length, symbols, numbers, and uppercase",
+        "Strength bar visually shows Weak (red), Medium (yellow), Strong (green)",
+        "Weak passwords trigger an auto-generated strong password suggestion",
+        "The page uses full hacker-green monospace aesthetic"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HackerPage.tsx",
+          "operation": "create",
+          "description": "Build the hidden Easter Egg Hacker Page component with three sections: (1) cinematic password cracking animation showing random character cycling for ~3 seconds then revealing a 'cracked' password, (2) password strength checker input that evaluates user-typed password in real-time and shows strength score (Weak/Medium/Strong) with visual bar indicator (red/yellow/green), and (3) auto-generated strong password suggestion display when strength is Weak. Style with full hacker-green monospace aesthetic and matrix code rain background (using frontend/public/assets/generated/hacker-bg.dim_1920x1080.png). Page is only accessible via Konami code listener or terminal 'hacker' command."
+        },
+        {
+          "path": "frontend/src/hooks/useKonamiCode.ts",
+          "operation": "create",
+          "description": "Create a custom hook useKonamiCode that listens for the Konami code key sequence (↑↑↓↓←→←→BA) on the keyboard. Return a boolean indicating if the code was entered. Use useEffect to attach keydown listener and track sequence state. Clean up listener on unmount."
+        },
+        {
+          "path": "frontend/src/utils/passwordStrength.ts",
+          "operation": "create",
+          "description": "Export functions to evaluate password strength (checking length, uppercase, lowercase, numbers, symbols) and return a strength score enum (Weak/Medium/Strong). Also export a generateStrongPassword function that produces a random secure password with mixed character types."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Build Cyber Defender page with threat mini-game, tips carousel, shield score, and threat map animation",
+      "acceptanceCriteria": [
+        "Cyber Defender page is accessible from the dashboard as a named tile",
+        "Phishing email mini-game presents a fake email with at least 5 clickable suspicious elements to identify",
+        "Tips carousel shows at least 10 cybersecurity tips with navigation arrows",
+        "Shield Score increments when activities are completed",
+        "Threat map animation shows animated arcs between fake geographic nodes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CyberDefender.tsx",
+          "operation": "create",
+          "description": "Create the Cyber Defender dedicated cybersecurity awareness page with hero banner using frontend/public/assets/generated/cyber-defender-banner.dim_1200x400.png. Include four sections: (1) interactive phishing email mini-game showing a fake email screenshot with at least 5 clickable suspicious elements (misspelled URL, urgent tone, unknown sender, etc.) that user must identify, (2) tips carousel with 10+ actionable cybersecurity tips and navigation arrows, (3) Shield Score counter that increments as user completes activities (identifies phishing elements, views tips), and (4) animated threat map showing fake global cyber attack paths with SVG arcs between geographic nodes. Style with neon accents and theme-aware colors."
+        },
+        {
+          "path": "frontend/src/data/cyberTips.ts",
+          "operation": "create",
+          "description": "Export an array of at least 10 cybersecurity tips with title and description. Cover topics: strong passwords, two-factor authentication, phishing awareness, software updates, secure Wi-Fi, social engineering, data backup, suspicious links, privacy settings, and incident reporting."
+        },
+        {
+          "path": "frontend/src/components/ThreatMap.tsx",
+          "operation": "create",
+          "description": "Build an animated threat map component using SVG or Canvas. Display a world map silhouette with fake geographic nodes (major cities) and animate arcs/lines between them to simulate cyber attack paths. Use theme-aware colors for arcs (cyan/blue/green). Animate continuously with staggered timing for visual effect."
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Apply cohesive neon cyberpunk visual design system with glowing buttons, sci-fi fonts, animations, and ASCII logo",
+      "acceptanceCriteria": [
+        "All views use the defined color palette for the active theme",
+        "Buttons have visible glowing borders with hover glow amplification",
+        "Sci-fi / monospace font is applied to all headings and UI labels",
+        "Page transitions use animated effects (glitch, fade, or slide)",
+        "ASCII logo is displayed in the dashboard header with a CSS glow pulse animation",
+        "UI looks like a futuristic product at a glance, not a standard web page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create a global Layout component that wraps all views and includes: ParticleBackground as fixed backdrop, Taskbar at the top, ASCII art SUPER ASSISTANT logo in the header with CSS glow pulse animation, and main content area with theme-aware styling. Handle page transition animations (glitch/fade/slide) when route changes. Apply the selected theme class to the wrapper div."
+        },
+        {
+          "path": "frontend/src/components/Button.tsx",
+          "operation": "create",
+          "description": "Create a reusable Button component with neon cyberpunk styling: high-contrast glowing borders, hover glow amplification effect, theme-aware accent colors, sci-fi font, and click sound effect via audio context. Export variants (primary, secondary, danger) for different use cases."
+        },
+        {
+          "path": "frontend/public/index.html",
+          "operation": "modify",
+          "description": "Add Google Fonts link for Orbitron or Share Tech Mono sci-fi/monospace font family in the <head>. Update page title to 'SUPER ASSISTANT' and add a meta description for the cyberpunk showcase."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Ensure full responsive design for mobile (320px+) and laptop (1024px+) with touch support",
+      "acceptanceCriteria": [
+        "Dashboard tiles reflow to a 2-column grid on screens below 768px",
+        "All text, buttons, and inputs are legible and tappable on mobile",
+        "Memory game and quiz are fully playable on a touch screen",
+        "No horizontal overflow on any screen size"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add responsive breakpoints using Tailwind's mobile-first approach. Ensure dashboard grid reflows to 2 columns on small screens. Set minimum tap target sizes (44x44px) for buttons and interactive elements. Add overflow-x-hidden to prevent horizontal scroll. Increase font sizes and padding on mobile for readability."
+        },
+        {
+          "path": "frontend/src/components/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Update dashboard tile grid to use responsive Tailwind classes: grid-cols-2 on mobile, grid-cols-3 on tablet, grid-cols-4 on desktop. Ensure keyboard navigation also works with touch swipe gestures where appropriate."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Wire generated images into frontend as static assets",
+      "acceptanceCriteria": [
+        "Dashboard background image is displayed correctly",
+        "Cyber Defender banner is displayed on the Cyber Defender page",
+        "Hacker Page background is displayed correctly",
+        "Avatar sprite sheet is loaded and sliced for profile selection"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Add background image to the dashboard component using the generated file frontend/public/assets/generated/dashboard-bg.dim_1920x1080.png as a CSS background-image or img element. Ensure the image is layered behind the particle background and tiles with appropriate opacity."
+        },
+        {
+          "path": "frontend/src/components/CyberDefender.tsx",
+          "operation": "modify",
+          "description": "Display the generated hero banner image frontend/public/assets/generated/cyber-defender-banner.dim_1200x400.png at the top of the Cyber Defender page as a full-width banner element."
+        },
+        {
+          "path": "frontend/src/components/HackerPage.tsx",
+          "operation": "modify",
+          "description": "Apply the generated matrix code rain background image frontend/public/assets/generated/hacker-bg.dim_1920x1080.png as a fixed background for the entire Hacker Page view using CSS background-image or img element."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Wire all feature views into App router and navigation",
+      "acceptanceCriteria": [
+        "All feature pages are routable from the dashboard",
+        "Hacker Page is conditionally routed only when unlocked",
+        "Back navigation works from all feature views to dashboard",
+        "Routes are protected or guarded as needed"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Set up React Router with routes for: IntroScreen (default /), Dashboard (/dashboard), Chatbot (/chatbot), Terminal (/terminal), Quiz (/quiz), Games (/games), TechNews (/news), Profile (/profile), CyberDefender (/cyber-defender), and HackerPage (/hacker). Wrap all routes in Layout component for consistent styling and particle background. Handle intro-to-dashboard transition. Conditionally render HackerPage route only when unlocked via Konami code or terminal command (use context or state)."
+        },
+        {
+          "path": "frontend/src/contexts/AppContext.tsx",
+          "operation": "create",
+          "description": "Create AppContext providing shared app state: isHackerPageUnlocked (boolean), unlockHackerPage function, and any other global state needed for navigation or feature unlocking. Export useApp hook."
+        }
+      ]
+    }
+  ]
+}

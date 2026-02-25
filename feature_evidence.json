@@ -1,0 +1,312 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-an-animated-intro-splash-screen-that-displays-on-first-load-it-must-show-the-ascii-art-logo-for-super-assistant-rendered-in-glowing-neon-text-with-a-typewriter-reveal-animation-particle-burst-effect-and-synthetic-sound-effect-web-audio-api-beep-hum-after-4-seconds-or-a-enter-keypress-transition-to-the-main-dashboard",
+      "featureTitle": "Create an animated intro/splash screen that displays on first load. It must show the ASCII art logo for SUPER ASSISTANT rendered in glowing neon text, with a typewriter reveal animation, particle burst effect, and synthetic sound effect (Web Audio API beep/hum). After ~4 seconds or a 'Enter' keypress, transition to the main dashboard.",
+      "files": [
+        "frontend/src/components/IntroScreen.tsx",
+        "frontend/src/utils/audio.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-an-os-style-main-dashboard-as-the-app-s-hub-it-must-resemble-a-futuristic-operating-system-desktop-with-icon-based-app-tiles-for-each-feature-chatbot-terminal-quiz-games-cyber-defender-profile-news-hacker-page-easter-egg-support-mouse-click-navigation-and-keyboard-arrow-key-enter-navigation-between-tiles-include-a-top-taskbar-showing-the-current-time-theme-switcher-mute-button-and-fullscreen-toggle",
+      "featureTitle": "Build an OS-style main dashboard as the app's hub. It must resemble a futuristic operating system desktop with icon-based app tiles for each feature (Chatbot, Terminal, Quiz, Games, Cyber Defender, Profile, News, Hacker Page easter egg). Support mouse click navigation and keyboard arrow-key + Enter navigation between tiles. Include a top taskbar showing the current time, theme switcher, mute button, and fullscreen toggle.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/contexts/AppContext.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-three-themes-dark-default-deep-black-neon-cyan-light-white-electric-blue-and-hacker-pure-black-matrix-green-with-instant-switching-via-the-taskbar-apply-the-selected-theme-globally-using-css-variables-tailwind-class-strategy-persist-the-user-s-theme-choice-to-the-motoko-backend-profile",
+      "featureTitle": "Implement three themes — Dark (default deep black + neon cyan), Light (white + electric blue), and Hacker (pure black + matrix green) — with instant switching via the taskbar. Apply the selected theme globally using CSS variables / Tailwind class strategy. Persist the user's theme choice to the Motoko backend profile.",
+      "files": [
+        "frontend/src/components/CyberDefender.tsx",
+        "frontend/src/components/Dashboard.tsx",
+        "frontend/src/components/HackerPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-animated-particle-background-using-three-js-react-three-fiber-that-renders-continuously-behind-all-views-particles-should-drift-and-react-to-mouse-movement-parallax-repulsion-the-particle-color-must-adapt-to-the-active-theme-cyan-for-dark-blue-for-light-green-for-hacker",
+      "featureTitle": "Create an animated particle background using Three.js / React Three Fiber that renders continuously behind all views. Particles should drift and react to mouse movement (parallax repulsion). The particle color must adapt to the active theme (cyan for dark, blue for light, green for hacker).",
+      "files": [
+        "frontend/src/components/ParticleBackground.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-an-ai-chatbot-simulation-panel-it-must-accept-user-text-input-and-respond-from-a-hard-coded-knowledge-base-of-50-responses-covering-tech-topics-greetings-jokes-and-mood-sensitive-replies-responses-must-be-rendered-with-a-real-time-typewriter-animation-character-by-character-with-a-slight-random-delay-to-simulate-thinking-display-conversation-history-fetched-from-the-motoko-backend-include-a-mood-detection-feature-scan-user-input-for-keywords-frustrated-happy-confused-etc-and-prepend-a-contextual-emoji-tone-adjustment-to-the-response",
+      "featureTitle": "Build an AI chatbot simulation panel. It must accept user text input and respond from a hard-coded knowledge base of 50+ responses covering tech topics, greetings, jokes, and mood-sensitive replies. Responses must be rendered with a real-time typewriter animation (character-by-character) with a slight random delay to simulate thinking. Display conversation history fetched from the Motoko backend. Include a 'mood detection' feature: scan user input for keywords (frustrated, happy, confused, etc.) and prepend a contextual emoji + tone adjustment to the response.",
+      "files": [
+        "frontend/src/components/Chatbot.tsx",
+        "frontend/src/components/TypewriterText.tsx",
+        "frontend/src/data/chatbotResponses.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-terminal-mode-view-that-looks-like-a-real-hacking-terminal-it-must-accept-typed-commands-help-whoami-scan-decrypt-hack-clear-exit-and-render-styled-output-with-green-on-black-monospace-text-blinking-cursor-and-simulated-processing-delays-with-fake-progress-bars-or-streaming-text-opening-the-terminal-should-play-a-subtle-keystroke-boot-sound",
+      "featureTitle": "Implement a Terminal Mode view that looks like a real hacking terminal. It must accept typed commands (help, whoami, scan, decrypt, hack, clear, exit) and render styled output with green-on-black monospace text, blinking cursor, and simulated processing delays with fake progress bars or streaming text. Opening the terminal should play a subtle keystroke/boot sound.",
+      "files": [
+        "frontend/src/components/Terminal.tsx",
+        "frontend/src/utils/terminalCommands.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-quiz-mode-with-at-least-20-questions-covering-real-life-cybersecurity-and-phishing-scenarios-e-g-you-received-an-email-saying-you-won-a-lottery-and-must-click-a-link-what-do-you-do-a-click-the-link-b-report-ignore-it-show-a-score-counter-correct-incorrect-feedback-animations-and-a-final-score-screen-save-the-final-score-to-the-motoko-backend-questions-must-have-logically-correct-educational-answers",
+      "featureTitle": "Build a Quiz Mode with at least 20 questions covering real-life cybersecurity and phishing scenarios (e.g., 'You received an email saying you won a lottery and must click a link — what do you do? A) Click the link B) Report/ignore it'). Show a score counter, correct/incorrect feedback animations, and a final score screen. Save the final score to the Motoko backend. Questions must have logically correct educational answers.",
+      "files": [
+        "frontend/src/components/Quiz.tsx",
+        "frontend/src/data/quizQuestions.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-memory-game-where-the-player-flips-cards-to-find-matching-pairs-of-tech-themed-icons-symbols-e-g-lock-bug-shield-key-wifi-code-include-a-move-counter-timer-and-win-state-animation-implement-a-logic-puzzle-where-the-user-solves-a-simple-programming-logic-riddle-at-least-5-riddles-with-a-text-input-answer-check",
+      "featureTitle": "Implement a Memory Game where the player flips cards to find matching pairs of tech-themed icons/symbols (e.g., lock, bug, shield, key, wifi, code). Include a move counter, timer, and win state animation. Implement a Logic Puzzle where the user solves a simple programming/logic riddle (at least 5 riddles with a text input answer check).",
+      "files": [
+        "frontend/src/components/Games.tsx",
+        "frontend/src/components/LogicPuzzle.tsx",
+        "frontend/src/components/MemoryGame.tsx",
+        "frontend/src/data/logicRiddles.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-tech-news-simulation-panel-that-displays-a-scrolling-feed-of-15-hard-coded-realistic-looking-tech-news-headlines-with-publication-timestamps-category-tags-ai-security-blockchain-etc-and-a-short-excerpt-include-a-breaking-news-ticker-bar-at-the-top-clicking-a-headline-expands-it-to-a-fake-full-article-view",
+      "featureTitle": "Create a Tech News Simulation panel that displays a scrolling feed of 15+ hard-coded realistic-looking tech news headlines with publication timestamps, category tags (AI, Security, Blockchain, etc.), and a short excerpt. Include a 'Breaking News' ticker bar at the top. Clicking a headline expands it to a fake full article view.",
+      "files": [
+        "frontend/src/components/TechNews.tsx",
+        "frontend/src/data/newsData.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-user-profile-page-where-the-user-can-set-a-username-choose-an-avatar-from-8-preset-cyberpunk-avatar-illustrations-svg-emoji-based-and-view-their-stats-total-quiz-score-games-played-chats-sent-profile-data-must-be-saved-to-and-loaded-from-the-motoko-backend",
+      "featureTitle": "Build a User Profile page where the user can set a username, choose an avatar from 8+ preset cyberpunk avatar illustrations (SVG/emoji-based), and view their stats (total quiz score, games played, chats sent). Profile data must be saved to and loaded from the Motoko backend.",
+      "files": [
+        "frontend/src/components/Profile.tsx",
+        "frontend/src/utils/avatarLoader.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-music-and-sound-effects-system-using-the-web-audio-api-include-a-toggle-button-in-the-taskbar-for-mute-unmute-background-ambient-music-synthwave-loop-generated-procedurally-or-via-audiobuffer-should-play-in-the-dashboard-distinct-sound-effects-must-play-for-button-clicks-theme-switch-terminal-open-intro-screen-quiz-correct-wrong-answers-and-game-win",
+      "featureTitle": "Implement a music and sound effects system using the Web Audio API. Include a toggle button in the taskbar for mute/unmute. Background ambient music (synthwave loop generated procedurally or via AudioBuffer) should play in the dashboard. Distinct sound effects must play for: button clicks, theme switch, terminal open, intro screen, quiz correct/wrong answers, and game win.",
+      "files": [
+        "frontend/src/contexts/AudioContext.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-fullscreen-immersive-mode-button-in-the-taskbar-that-calls-the-fullscreen-api-to-expand-the-app-to-fill-the-entire-screen-the-app-layout-must-reflow-gracefully-in-fullscreen-without-overflow-or-layout-breaks",
+      "featureTitle": "Add a fullscreen immersive mode button in the taskbar that calls the Fullscreen API to expand the app to fill the entire screen. The app layout must reflow gracefully in fullscreen without overflow or layout breaks.",
+      "files": [
+        "frontend/src/hooks/useFullscreen.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-guided-demo-tour-mode-accessible-from-the-dashboard-when-activated-it-walks-the-user-through-8-10-key-features-in-sequence-using-highlighted-spotlight-overlays-animated-pointers-and-descriptive-tooltip-cards-each-step-has-a-next-button-the-tour-should-showcase-intro-dashboard-chatbot-terminal-quiz-memory-game-news-cyber-defender-and-hacker-page",
+      "featureTitle": "Build a Guided Demo Tour mode accessible from the dashboard. When activated, it walks the user through 8–10 key features in sequence using highlighted spotlight overlays, animated pointers, and descriptive tooltip cards. Each step has a 'Next' button. The tour should showcase: intro, dashboard, chatbot, terminal, quiz, memory game, news, Cyber Defender, and Hacker Page.",
+      "files": [
+        "frontend/src/components/GuidedTour.tsx",
+        "frontend/src/data/tourSteps.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-easter-egg-hacker-page-it-must-be-hidden-and-only-accessible-by-typing-the-secret-konami-code-ba-on-the-keyboard-or-entering-the-command-hacker-in-the-terminal-the-page-must-feature-1-a-cinematic-password-cracking-animation-showing-random-characters-cycling-until-the-cracked-password-is-revealed-2-a-password-strength-checker-input-where-the-user-types-any-password-and-receives-a-real-time-strength-score-weak-medium-strong-with-visual-bar-indicator-and-3-if-the-entered-password-is-weak-an-auto-generated-strong-password-suggestion-is-displayed",
+      "featureTitle": "Implement the Easter Egg Hacker Page. It must be hidden and only accessible by typing the secret Konami code (↑↑↓↓←→←→BA) on the keyboard or entering the command 'hacker' in the terminal. The page must feature: (1) a cinematic password cracking animation showing random characters cycling until the 'cracked' password is revealed, (2) a password strength checker input where the user types any password and receives a real-time strength score (Weak/Medium/Strong) with visual bar indicator, and (3) if the entered password is Weak, an auto-generated strong password suggestion is displayed.",
+      "files": [
+        "frontend/src/components/HackerPage.tsx",
+        "frontend/src/hooks/useKonamiCode.ts",
+        "frontend/src/utils/passwordStrength.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-cyber-defender-page-as-a-dedicated-cybersecurity-awareness-experience-it-must-include-an-interactive-threat-identification-mini-game-user-spots-phishing-elements-in-a-fake-email-screenshot-a-cybersecurity-tips-carousel-with-10-actionable-tips-a-shield-score-that-increases-as-the-user-completes-awareness-activities-and-a-visual-threat-map-animation-showing-fake-global-cyber-attack-paths",
+      "featureTitle": "Build the Cyber Defender page as a dedicated cybersecurity awareness experience. It must include: an interactive threat identification mini-game (user spots phishing elements in a fake email screenshot), a cybersecurity tips carousel with 10+ actionable tips, a 'Shield Score' that increases as the user completes awareness activities, and a visual threat map animation showing fake global cyber attack paths.",
+      "files": [
+        "frontend/src/components/CyberDefender.tsx",
+        "frontend/src/components/ThreatMap.tsx",
+        "frontend/src/data/cyberTips.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-application-is-fully-responsive-for-both-mobile-320px-and-laptop-1024px-screen-sizes-the-os-style-dashboard-must-reflow-to-a-vertical-scrollable-tile-grid-on-mobile-touch-events-must-work-for-game-interactions-and-navigation",
+      "featureTitle": "Ensure the application is fully responsive for both mobile (320px+) and laptop (1024px+) screen sizes. The OS-style dashboard must reflow to a vertical scrollable tile grid on mobile. Touch events must work for game interactions and navigation.",
+      "files": [
+        "frontend/src/components/Dashboard.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-18"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
